@@ -28,14 +28,9 @@ secure_session_start();
 <section id="info">
     <center><h1>Profiling Tools
 	<br>
-
-	<button onclick="window.location.href='/SD/previous.php" class="button_1" name="previous" /><<</button>
-	
-	
-	<button>>></button>
-
-	
-	</h1>
+	<button id="prev_button" class="button_1" ><<</button>
+	<button id="next_button" class="button_1" >>></button>
+    </h1>
 	
         <?php if (login_check($mysqli)):
         // echo "<h1>". 'Welcome '.  trim(htmlentities($_SESSION['username'])).'!'.  "</h1>";
@@ -54,14 +49,25 @@ secure_session_start();
 <span class="error">Not authorized to access this page.</span> Please <ahref="index.php">login</a>.
 </p>
 <?php endif; ?>
-
+<!--Jquery to traverse through the database-->
  </center></br>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
 
 	  $(document).ready(function() {
-		var commentCount=1;
-		$("button").click(function() {
+		var commentCount=2;
+		/*previous button scenerio*/
+		$("#prev_button").click(function() {
+			/* alert("The paragraph was clicked.");*/
+			commentCount=commentCount-1;
+      
+	   $( "#comments" ).load( "loadcomments1.php", {"commentCount":commentCount},function() {
+		commentNewCount:commentCount;
+			});
+      
+		});
+		/*Next button scenerio*/
+		$("#next_button").click(function() {
 			/* alert("The paragraph was clicked.");*/
 			commentCount=commentCount+1;
       
@@ -70,9 +76,11 @@ secure_session_start();
 			});
       
 		});
+		
+		
 	});
 	  
-    </script>
+ </script>
   <div id="comments">
  <?php
 echo "<center>";
@@ -97,10 +105,7 @@ echo "</center>";
 echo "</h1>";
 ?>
  </div>
- 
- 
 </body>
-
 <section id="showcase">
  </section> 
 	<footer>
