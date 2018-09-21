@@ -6,7 +6,8 @@ require_once __DIR__ . '/../required/db_connect.php';
  
 $commentNewCount=$_POST['commentCount'];
 
-$sql="SELECT * FROM device LIMIT $commentNewCount";
+
+$sql="SELECT * FROM device LIMIT 2 OFFSET $commentNewCount";
 $result=mysqli_query($mysqli ,$sql);
  $rowcount=mysqli_num_rows($result);
 
@@ -15,7 +16,7 @@ echo "<h1>";
 if($rowcount>0){
 	while($row=mysqli_fetch_assoc($result)){
 	echo "<p>"; 
-	echo $row['devname'];
+	echo $row['devnum'];
 	echo "<br>";
 	echo $row['status'];
 	echo "</p>";

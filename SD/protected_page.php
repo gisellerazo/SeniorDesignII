@@ -55,7 +55,7 @@ secure_session_start();
     <script>
 
 	  $(document).ready(function() {
-		var commentCount=2;
+		var commentCount=0;
 		/*previous button scenerio*/
 		$("#prev_button").click(function() {
 			/* alert("The paragraph was clicked.");*/
@@ -69,7 +69,7 @@ secure_session_start();
 		/*Next button scenerio*/
 		$("#next_button").click(function() {
 			/* alert("The paragraph was clicked.");*/
-			commentCount=commentCount+1;
+			commentCount=commentCount+2;
       
 	   $( "#comments" ).load( "loadcomments.php", {"commentCount":commentCount},function() {
 		commentNewCount:commentCount;
@@ -92,7 +92,7 @@ $result=mysqli_query($mysqli ,$sql);
 if($rowcount>0){
 	while($row=mysqli_fetch_assoc($result)){
 	echo "<p>"; 
-	echo $row['devname'];
+	echo $row['devnum'];
 	echo "<br>";
 	echo $row['status'];
 	echo "</p>";
