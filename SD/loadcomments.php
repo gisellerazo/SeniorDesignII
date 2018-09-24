@@ -1,16 +1,10 @@
-
 <?php
 require_once __DIR__ . '/../required/db_connect.php';
-
-
  
 $commentNewCount=$_POST['commentCount'];
-
-
 $sql="SELECT * FROM device LIMIT 2 OFFSET $commentNewCount";
 $result=mysqli_query($mysqli ,$sql);
  $rowcount=mysqli_num_rows($result);
-
 echo "<center>";
 echo "<h1>";
 if($rowcount>0){
@@ -28,4 +22,3 @@ if($rowcount>0){
 echo "</center>";
 echo "</h1>";
 ?>
-
